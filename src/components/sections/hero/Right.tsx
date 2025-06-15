@@ -1,10 +1,11 @@
+import Image from 'next/image'
 import React from 'react'
 
 function Right() {
     return (
-        <div className='relative w-full h-screen'>
+        <div className='relative w-full pt-20'>
             <svg 
-                className='w-full h-full' 
+                className='w-full absolute top-0 right-0 h-screen' 
                 viewBox="0 0 100 100" 
                 preserveAspectRatio="none"
                 fill="#fff1da"
@@ -21,6 +22,17 @@ function Right() {
                     Z
                 " />
             </svg>
+            <div className='relative z-10'>
+                <div className='absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-2 w-48 h-12 bg-black/20 rounded-full blur-sm'></div>
+                
+                <Image 
+                    className='relative z-10'
+                    src="/images/women_irish.png"
+                    alt='Women'
+                    width={600}
+                    height={1000}
+                />
+            </div>
         </div>
     )
 }
