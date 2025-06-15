@@ -19,7 +19,7 @@ function Left() {
       </motion.p>
       
       <motion.div 
-        className='text-5xl whitespace-nowrap lg:text-8xl font-serif font-semibold'
+        className='text-5xl whitespace-nowrap text-[#181e4b] lg:text-8xl font-serif font-semibold'
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.4 }}
@@ -39,7 +39,7 @@ function Left() {
       </motion.div>
       
       <motion.p 
-        className='md-text-lg leading-relaxed lg:text-xl text-violet-900 font-semibold'
+        className='md-text-lg leading-relaxed lg:text-xl text-[#5e6282] font-semibold'
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.6 }}
