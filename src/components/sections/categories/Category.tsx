@@ -1,11 +1,11 @@
 import React from 'react'
 
-function Hero() {
+function Category() {
   return (
     <div>
-      Hero
+      Category
     </div>
   )
 }
 
-export default Hero
+export default Category
