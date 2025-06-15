@@ -1,14 +1,20 @@
-import Image from 'next/image'
-import React from 'react'
+"use client";
+
+import Image from 'next/image';
+import React from 'react';
+import { motion } from 'framer-motion';
 
 function Right() {
     return (
         <div className='relative w-full pt-20'>
-            <svg 
+            <motion.svg 
                 className='w-full absolute top-0 right-0 h-screen' 
                 viewBox="0 0 100 100" 
                 preserveAspectRatio="none"
                 fill="#fff1da"
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 1, delay: 0.3 }}
             >
                 <path d="
                     M 20,0
@@ -21,17 +27,29 @@ function Right() {
                     C 20,30 10,15 20,0
                     Z
                 " />
-            </svg>
+            </motion.svg>
+            
             <div className='relative z-10'>
-                <div className='absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-2 w-48 h-12 bg-black/20 rounded-full blur-sm'></div>
-                
-                <Image 
-                    className='relative z-10'
-                    src="/images/women_irish.png"
-                    alt='Women'
-                    width={600}
-                    height={1000}
+                <motion.div 
+                    className='absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-2 w-48 h-12 bg-black/20 rounded-full blur-sm'
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.8, delay: 0.8 }}
                 />
+                
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1, delay: 0.6 }}
+                >
+                    <Image 
+                        className='relative z-10'
+                        src="/images/women_irish.png"
+                        alt='Women'
+                        width={600}
+                        height={1000}
+                    />
+                </motion.div>
             </div>
         </div>
     )
