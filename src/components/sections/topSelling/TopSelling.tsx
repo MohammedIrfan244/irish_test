@@ -1,13 +1,15 @@
-import React from 'react'
-import Jalebi from '@/components/shared/helper/Jalebi'
-import Cards from './Cards'
+'use client'
+import React from 'react';
+import { motion } from 'framer-motion';
+import Jalebi from '@/components/shared/helper/Jalebi';
+import Cards from './Cards';
 
 interface IPlace {
-  id: string
-  image: string
-  place: string
-  price: number
-  days: number
+  id: string;
+  image: string;
+  place: string;
+  price: number;
+  days: number;
 }
 
 const PLACES: IPlace[] = [
@@ -40,25 +42,33 @@ function TopSelling() {
       <div className='relative space-y-5 md:space-y-10'>
         <p className='text-center text-lg md:text-xl text-[#5e6282] tracking-widest font-sans font-bold'>TOP SELLING</p>
         <h2 className='text-center text-3xl md:text-5xl lg:text-6xl font-serif text-[#181e4b] font-bold'>Top Destinations</h2>
+        
         <div className='md:absolute right-0 top-0 min-w-40 md:block hidden'>
-          <Jalebi size={400}/>
+          <Jalebi size={400} />
         </div>
+
         <div className='flex justify-center'>
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'>
-            {PLACES.map(item => (
-              <Cards
+            {PLACES.map((item, index) => (
+              <motion.div
                 key={item.id}
-                image={item.image}
-                place={item.place}
-                price={item.price}
-                days={item.days}
-              />
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.2, duration: 0.6, ease: 'easeOut' }}
+              >
+                <Cards
+                  image={item.image}
+                  place={item.place}
+                  price={item.price}
+                  days={item.days}
+                />
+              </motion.div>
             ))}
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default TopSelling
+export default TopSelling;

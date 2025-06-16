@@ -1,12 +1,14 @@
-import React from 'react'
-import Pattern from './Pattern'
-import Cards from './Cards'
+'use client';
+import React from 'react';
+import Pattern from './Pattern';
+import Cards from './Cards';
+import { motion } from 'framer-motion';
 
 interface IGategory {
-  id: string
-  image: string
-  title: string
-  description: string
+  id: string;
+  image: string;
+  title: string;
+  description: string;
 }
 
 const CATEGORIES: IGategory[] = [
@@ -36,30 +38,36 @@ const CATEGORIES: IGategory[] = [
   }
 ];
 
-
 function Category() {
   return (
     <div className='pt-10 md:pt-20 lg:pt-32'>
       <div className='relative space-y-5 md:space-y-10'>
         <p className='text-center text-lg md:text-xl text-[#5e6282] tracking-widest font-sans font-bold'>CATEGORY</p>
         <h2 className='text-center text-3xl md:text-5xl lg:text-6xl font-serif text-[#181e4b] font-bold'>We Offer Best Services</h2>
+
         <div className='md:absolute right-0 top-0 min-w-40 md:block hidden'>
           <Pattern />
         </div>
-        <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 px-5'>
-          {CATEGORIES.map(item => (
-            <Cards
+
+        <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 px-5 gap-6'>
+          {CATEGORIES.map((item, index) => (
+            <motion.div
               key={item.id}
-              title={item.title}
-              image={item.image}
-              description={item.description}
-            />
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.15, duration: 0.6, ease: 'easeOut' }}
+            >
+              <Cards
+                title={item.title}
+                image={item.image}
+                description={item.description}
+              />
+            </motion.div>
           ))}
         </div>
-
       </div>
     </div>
-  )
+  );
 }
 
-export default Category
+export default Category;
