@@ -2,6 +2,8 @@ import React from 'react'
 import Left from './Left'
 import Right from './Right'
 
+
+
 function Testimonial() {
   return (
     <div className='flex flex-col lg:flex-row w-full pt-10 md:pt-20 lg:pt-32 px-5 md:px-10 lg:px-20'>
