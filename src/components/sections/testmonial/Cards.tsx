@@ -1,6 +1,8 @@
 import React from 'react'
 
-function Pattern() {
+interfa
+
+function Cards() {
   return (
     <div>
       
@@ -8,4 +10,4 @@ function Pattern() {
   )
 }
 
-export default Pattern
+export default Cards

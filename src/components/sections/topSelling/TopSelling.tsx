@@ -1,5 +1,5 @@
 import React from 'react'
-import Pattern from './Pattern'
+import Jalebi from '@/components/shared/helper/Jalebi'
 import Cards from './Cards'
 
 interface IPlace {
@@ -41,7 +41,7 @@ function TopSelling() {
         <p className='text-center text-lg md:text-xl text-[#5e6282] tracking-widest font-sans font-bold'>TOP SELLING</p>
         <h2 className='text-center text-3xl md:text-5xl lg:text-6xl font-serif text-[#181e4b] font-bold'>Top Destinations</h2>
         <div className='md:absolute right-0 top-0 min-w-40 md:block hidden'>
-          <Pattern />
+          <Jalebi size={400}/>
         </div>
         <div className='flex justify-center'>
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'>
