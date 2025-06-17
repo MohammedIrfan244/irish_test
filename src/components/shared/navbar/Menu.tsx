@@ -26,15 +26,13 @@ function Menu() {
           </p>
         ))}
       </div>
-
-      {/* Mobile Toggle Button */}
       <div className="md:hidden">
         <HiBars3 className="text-2xl cursor-pointer" onClick={() => setIsOpen(true)} />
       </div>
 
       {/* for sm */}
       {isOpen && (
-        <div className="fixed top-0 right-0 h-full w-64 bg-white shadow-lg z-50 p-6">
+        <div className="fixed top-0 left-0 h-full w-64 bg-white shadow-lg z-50 p-6">
           <div className="flex justify-end mb-6">
             <IoClose className="text-2xl cursor-pointer" onClick={() => setIsOpen(false)} />
           </div>
