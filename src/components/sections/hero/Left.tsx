@@ -7,7 +7,7 @@ import { IoIosPlay } from "react-icons/io";
 
 function Left() {
   return (
-    <div className='w-full h-auto lg:min-h-screen flex flex-col justify-center px-5 sm:px-8 md:px-12 lg:px-16 xl:px-20 py-40 md:py-10 lg:py-0'>
+    <div className='w-full h-auto lg:min-h-screen flex flex-col justify-center lg:justify-end px-5 sm:px-8 md:px-12 lg:px-16 xl:px-20 py-40 md:py-10 lg:py-0'>
       
       <motion.p 
         className='text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-bold text-orange-700 mb-4 sm:mb-6 md:mb-8'
@@ -24,7 +24,7 @@ function Left() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.4 }}
       >
-        <h2 className='text-5xl md:text-5xl lg:text-6xl xl:text-7xl text-[#181e4b] font-serif font-semibold leading-tight'>
+        <h2 className='text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-[#181e4b] font-serif font-semibold leading-tight'>
           Travel, <span className='relative inline-block'>
             <Image
               className='absolute bottom-0 left-0 z-0 w-full h-auto'
@@ -36,10 +36,10 @@ function Left() {
             <span className='relative z-10'>enjoy</span>
           </span>
         </h2>
-        <h2 className='text-5xl md:text-5xl lg:text-6xl xl:text-7xl text-[#181e4b] font-serif font-semibold leading-tight'>
+        <h2 className='text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-[#181e4b] font-serif font-semibold leading-tight'>
           and live a new
         </h2>
-        <h2 className='text-5xl md:text-5xl lg:text-6xl xl:text-7xl text-[#181e4b] font-serif font-semibold leading-tight'>
+        <h2 className='text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-[#181e4b] font-serif font-semibold leading-tight'>
           and full life
         </h2>
       </motion.div>
@@ -68,7 +68,7 @@ function Left() {
           Find out more
         </motion.button>
         
-        <div className='flex gap-4 items-center hover:cursor-pointer text-center text-base sm:text-lg md:text-xl font-semibold text-gray-500'>
+        <div className='flex gap-4 items-center text-center text-base sm:text-lg md:text-xl font-semibold text-gray-500'>
           <motion.div 
             className='w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full flex justify-center bg-[#df6951] items-center'
             whileHover={{ scale: 1.1 }}
@@ -77,7 +77,7 @@ function Left() {
           >
             <IoIosPlay className='text-white text-lg sm:text-xl md:text-2xl' />
           </motion.div>
-          <p className=''>Play Demo</p>
+          <p>Play Demo</p>
         </div>
       </motion.div>
     </div>

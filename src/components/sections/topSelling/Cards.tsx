@@ -10,17 +10,12 @@ interface CardsProps {
 }
 
 function Cards({ image, place, price, days }: CardsProps) {
-  const formatPrice = (price: number) => {
-    return `$${price.toLocaleString()}`
-  }
+  const formatPrice = (price: number) => `$${price.toLocaleString()}`
+  const formatDays = (days: number) => `${days} Days Trip`
 
-  const formatDays = (days: number) => {
-    return `${days} Days Trip`
-  }
-
- return (
-    <div className='bg-white rounded-3xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300'>
-      <div className='w-90 h-96 overflow-hidden relative'>
+  return (
+    <div className='bg-white rounded-2xl md:rounded-3xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 w-full max-w-[320px] mx-auto'>
+      <div className='relative aspect-[4/5] w-full'>
         <Image 
           src={image} 
           alt={place}
@@ -28,18 +23,18 @@ function Cards({ image, place, price, days }: CardsProps) {
           className='object-cover hover:scale-105 transition-transform duration-300'
         />
       </div>
-      <div className='p-6 space-y-3 flex flex-col justify-between'>
+      <div className='p-4 md:p-5 space-y-3'>
         <div className='flex justify-between items-center'>
-        <h3 className='text-xl font-semibold text-[#5e6282]'>{place}</h3>
-          <span className='text-lg font-semibold text-[#5e6282]'>{formatPrice(price)}</span>
+          <h3 className='text-base md:text-lg font-semibold text-[#5e6282]'>{place}</h3>
+          <span className='text-sm md:text-base font-semibold text-[#5e6282]'>{formatPrice(price)}</span>
         </div>
         <div className='flex items-center gap-2'>
-            <TiLocationArrow className='text-3xl' />
-          <p className='text-lg font-semibold text-[#5e6282]'>{formatDays(days)}</p>
+          <TiLocationArrow className='text-xl md:text-2xl text-[#5e6282]' />
+          <p className='text-sm md:text-base font-semibold text-[#5e6282]'>{formatDays(days)}</p>
         </div>
       </div>
     </div>
   )
 }
 
-export default Cards
+export default Cards;
