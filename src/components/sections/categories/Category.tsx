@@ -1,8 +1,10 @@
 'use client';
-import React from 'react';
+import React, { useEffect} from 'react';
+import useEmblaCarousel from 'embla-carousel-react';
 import Pattern from './Pattern';
 import Cards from './Cards';
 import { motion } from 'framer-motion';
+import { IoChevronBack, IoChevronForward } from 'react-icons/io5';
 
 interface IGategory {
   id: string;
@@ -39,6 +41,31 @@ const CATEGORIES: IGategory[] = [
 ];
 
 function Category() {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ 
+    loop: true,
+    align: 'start',
+    skipSnaps: false,
+    dragFree: false,
+    slidesToScroll: 1,
+    breakpoints: {
+      '(min-width: 768px)': { slidesToScroll: 2 },
+      '(min-width: 1024px)': { slidesToScroll: 3 }
+    }
+  });
+
+  const scrollPrev = () => emblaApi && emblaApi.scrollPrev();
+  const scrollNext = () => emblaApi && emblaApi.scrollNext();
+
+  useEffect(() => {
+    if (!emblaApi) return;
+
+    const autoScroll = setInterval(() => {
+      emblaApi.scrollNext();
+    }, 4000);
+
+    return () => clearInterval(autoScroll);
+  }, [emblaApi]);
+
   return (
     <div className='pt-10 md:pt-20 lg:pt-32'>
       <div className='relative space-y-5 md:space-y-10'>
@@ -48,22 +75,42 @@ function Category() {
         <div className='md:absolute right-0 top-0 min-w-40 md:block hidden'>
           <Pattern />
         </div>
+        <div className='relative px-5'>
+          <div className='overflow-hidden' ref={emblaRef}>
+            <div className='flex'>
+              {CATEGORIES.map((item, index) => (
+                <div key={item.id} className='flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_33.333%] xl:flex-[0_0_25%] min-w-0'>
+                  <motion.div
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.15, duration: 0.6, ease: 'easeOut' }}
+                  >
+                    <Cards
+                      title={item.title}
+                      image={item.image}
+                      description={item.description}
+                    />
+                  </motion.div>
+                </div>
+              ))}
+            </div>
+          </div>
 
-        <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 px-5 gap-6'>
-          {CATEGORIES.map((item, index) => (
-            <motion.div
-              key={item.id}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.15, duration: 0.6, ease: 'easeOut' }}
-            >
-              <Cards
-                title={item.title}
-                image={item.image}
-                description={item.description}
-              />
-            </motion.div>
-          ))}
+          <button
+            onClick={scrollPrev}
+            className='absolute left-2 md:left-0 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white shadow-lg rounded-full p-2 md:p-3 z-20 transition-all duration-200'
+            aria-label="Previous slide"
+          >
+            <IoChevronBack className='w-4 h-4 md:w-6 md:h-6 text-[#181e4b]' />
+          </button>
+          
+          <button
+            onClick={scrollNext}
+            className='absolute right-2 md:right-0 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white shadow-lg rounded-full p-2 md:p-3 z-20 transition-all duration-200'
+            aria-label="Next slide"
+          >
+            <IoChevronForward className='w-4 h-4 md:w-6 md:h-6 text-[#181e4b]' />
+          </button>
         </div>
       </div>
     </div>

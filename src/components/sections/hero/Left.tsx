@@ -68,7 +68,7 @@ function Left() {
           Find out more
         </motion.button>
         
-        <div className='flex gap-4 items-center text-center text-base sm:text-lg md:text-xl font-semibold text-gray-500'>
+        <div className='flex gap-4 items-center hover:cursor-pointer text-center text-base sm:text-lg md:text-xl font-semibold text-gray-500'>
           <motion.div 
             className='w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full flex justify-center bg-[#df6951] items-center'
             whileHover={{ scale: 1.1 }}
@@ -77,7 +77,7 @@ function Left() {
           >
             <IoIosPlay className='text-white text-lg sm:text-xl md:text-2xl' />
           </motion.div>
-          <p>Play Demo</p>
+          <p className=''>Play Demo</p>
         </div>
       </motion.div>
     </div>
