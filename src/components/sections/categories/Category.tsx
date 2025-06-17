@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect} from 'react';
+import React, { useEffect } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import Pattern from './Pattern';
 import Cards from './Cards';
@@ -41,7 +41,7 @@ const CATEGORIES: IGategory[] = [
 ];
 
 function Category() {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ 
+  const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
     align: 'start',
     skipSnaps: false,
@@ -68,22 +68,38 @@ function Category() {
 
   return (
     <div className='pt-10 md:pt-20 lg:pt-32'>
-      <div className='relative space-y-5 md:space-y-10'>
-        <p className='text-center text-lg md:text-xl text-[#5e6282] tracking-widest font-sans font-bold'>CATEGORY</p>
-        <h2 className='text-center text-3xl md:text-5xl lg:text-6xl font-serif text-[#181e4b] font-bold'>We Offer Best Services</h2>
+      <motion.div
+        className='relative space-y-5 md:space-y-10'
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
+        viewport={{ once: true }}
+      >
+        <p className='text-center text-lg md:text-xl text-[#5e6282] tracking-widest font-sans font-bold'>
+          CATEGORY
+        </p>
+        <h2 className='text-center text-3xl md:text-5xl lg:text-6xl font-serif text-[#181e4b] font-bold'>
+          We Offer Best Services
+        </h2>
 
         <div className='md:absolute right-0 top-0 min-w-40 md:block hidden'>
           <Pattern />
         </div>
+
         <div className='relative px-5'>
           <div className='overflow-hidden' ref={emblaRef}>
             <div className='flex'>
               {CATEGORIES.map((item, index) => (
                 <div key={item.id} className='flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_33.333%] xl:flex-[0_0_25%] min-w-0'>
                   <motion.div
-                    initial={{ opacity: 0, y: 40 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.15, duration: 0.6, ease: 'easeOut' }}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{
+                      delay: index * 0.1,
+                      duration: 0.5,
+                      ease: 'easeOut'
+                    }}
+                    viewport={{ once: true }}
                   >
                     <Cards
                       title={item.title}
@@ -95,24 +111,30 @@ function Category() {
               ))}
             </div>
           </div>
-
-          <button
+          <motion.button
             onClick={scrollPrev}
+            whileTap={{ scale: 0.9 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.4 }}
             className='absolute left-2 md:left-0 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white shadow-lg rounded-full p-2 md:p-3 z-20 transition-all duration-200'
             aria-label="Previous slide"
           >
             <IoChevronBack className='w-4 h-4 md:w-6 md:h-6 text-[#181e4b]' />
-          </button>
-          
-          <button
+          </motion.button>
+          <motion.button
             onClick={scrollNext}
+            whileTap={{ scale: 0.9 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4, duration: 0.4 }}
             className='absolute right-2 md:right-0 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white shadow-lg rounded-full p-2 md:p-3 z-20 transition-all duration-200'
             aria-label="Next slide"
           >
             <IoChevronForward className='w-4 h-4 md:w-6 md:h-6 text-[#181e4b]' />
-          </button>
+          </motion.button>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }
