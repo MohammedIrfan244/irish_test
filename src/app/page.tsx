@@ -8,7 +8,7 @@ import TopSelling from "@/components/sections/topSelling/TopSelling";
 
 export default function Home() {
   return (
-    <>
+    <div>
       <Hero/>
       <Category/>
       <TopSelling/>
@@ -16,6 +16,6 @@ export default function Home() {
       <Testimonial/>
       <Banner/>
       <Subscription/>
-    </>
+    </div>
   );
 }

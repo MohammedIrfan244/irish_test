@@ -8,15 +8,15 @@ import Right from './Right';
 function Hero() {
   return (
     <motion.div 
-      className="flex flex-col md:flex-row h-auto md:min-h-screen"
+      className="flex flex-col w-full lg:flex-row h-auto lg:min-h-screen"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
     >
-      <div className="w-full md:w-1/2">
+      <div className="w-screen lg:w-1/2">
         <Left />
       </div>
-      <div className="hidden md:block w-full md:w-1/2">
+      <div className="hidden lg:block w-0 lg:w-1/2">
         <Right />
       </div>
     </motion.div>

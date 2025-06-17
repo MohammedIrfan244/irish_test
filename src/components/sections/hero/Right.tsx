@@ -29,25 +29,25 @@ function Right() {
                 " />
             </motion.svg>
             
-            <div className='relative z-10'>
-                <motion.div 
-                    className='absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-2 w-48 h-12 bg-black/20 rounded-full blur-sm'
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.8, delay: 0.8 }}
-                />
-                
+            <div className='relative z-10 flex items-center justify-center h-screen'>
                 <motion.div
+                    className='relative'
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1, delay: 0.6 }}
                 >
                     <Image 
-                        className='relative z-10'
+                        className='relative z-10 hover:scale-[1.02] transition-all ease-in-out duration-300'
                         src="/images/women_irish.png"
                         alt='Women'
                         width={600}
                         height={1000}
+                    />
+                    <motion.div 
+                        className='absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-2 w-48 h-12 bg-black/20 rounded-full blur-sm'
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.8, delay: 0.8 }}
                     />
                 </motion.div>
             </div>
