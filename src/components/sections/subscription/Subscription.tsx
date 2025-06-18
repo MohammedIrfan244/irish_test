@@ -5,14 +5,14 @@ import Pattern from '../categories/Pattern';
 
 function Subscription() {
   return (
-    <div className="pt-10 md:pt-20 lg:pt-32 px-10 md:px-16 lg:px-20 relative">
-      <div className="relative rounded-tl-[100px] lg:rounded-tl-[150px] z-10 rounded-tr-4xl bg-[#f9f7fe] rounded-bl-2xl rounded-br-2xl shadow-lg p-12 md:p-12 flex flex-col justify-evenly min-h-[400px]">
+    <div className="pt-10 md:pt-20 p-10 md:p-16 lg:p-20 relative">
+      <div className="relative rounded-tl-[100px] lg:rounded-tl-[150px] z-10 rounded-tr-xl bg-[#f9f7fe] rounded-bl-2xl rounded-br-2xl shadow-lg gap-5 md:gap-7 lg:gap-10 p-6 md:p-10 flex flex-col justify-evenly">
           <button className="p-3 md:p-5 lg:p-7 absolute -right-2 -top-2 rounded-full bg-blue-500 shadow-md hover:shadow-lg transition duration-200">
             <FaPaperPlane className="w-5 h-5 md:w-7 md:h-7 lg:w-10
              lg:h-10 text-white" />
           </button>
         <div className="text-center font-bold">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl text-gray-500 leading-relaxed">
+          <h2 className="text-lg md:text-2xl lg:text-4xl text-gray-500 leading-relaxed">
             Subscribe to get information, latest news and other
             <br />
             interesting offers about Jadoo
@@ -35,7 +35,7 @@ function Subscription() {
           </button>
         </div>
       </div>
-      <div className='hidden z-0 lg:absolute bottom-0 right-0'>
+      <div className='lg:absolute z-0 hidden lg:block bottom-0 right-0'>
         <Pattern/>
       </div>
     </div>
