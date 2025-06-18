@@ -2,6 +2,7 @@
 
 import React, { useEffect } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
+import { easeOut, motion } from 'framer-motion';
 import {
   FaApple,
   FaGoogle,
@@ -28,58 +29,66 @@ const brands = [
   { icon: FaDropbox, name: 'Dropbox' },
 ];
 
-const infiniteBrands = [...brands, ...brands];
+const duplicatedBrands = [...brands, ...brands];
 
 function Banner() {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
     align: 'start',
     skipSnaps: false,
-    dragFree: false,
-    containScroll: 'trimSnaps',
+    dragFree: true, 
+    slidesToScroll: 1,
+    breakpoints: {
+      '(min-width: 768px)': { slidesToScroll: 1 },
+      '(min-width: 1024px)': { slidesToScroll: 1 }
+    }
   });
 
   useEffect(() => {
     if (!emblaApi) return;
 
-    let rafId: number;
+    const autoScroll = setInterval(() => {
+      emblaApi.scrollNext();
+    }, 3000); 
 
-    const scroll = () => {
-      const delta = 0.02;
-      emblaApi.scrollTo(emblaApi.scrollProgress() + delta);
-      rafId = requestAnimationFrame(scroll);
-    };
-
-    rafId = requestAnimationFrame(scroll);
-
-    return () => cancelAnimationFrame(rafId);
+    return () => clearInterval(autoScroll);
   }, [emblaApi]);
 
   return (
-    <div className="w-full px-0 py-16 mt-10 lg:mt-16 overflow-hidden bg-white">
+    <motion.div 
+      className="w-full px-0 py-16 mt-10 lg:mt-16 overflow-hidden bg-white"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+    >
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex w-full">
-          {infiniteBrands.map((brand, index) => {
+          {duplicatedBrands.map((brand, index) => {
             const Icon = brand.icon;
             return (
-              <div
+              <motion.div
+              initial={{opacity:0,y:50}}
+              whileInView={{opacity:1,y:0}}
+              viewport={{once:false}}
+              transition={{duration:0.9,ease:easeOut}}
                 key={`${brand.name}-${index}`}
                 className="flex-shrink-0 basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 
                   flex flex-col items-center justify-center 
                   transition-all duration-300 ease-in-out 
                   hover:bg-gray-100 hover:shadow-2xl hover:scale-105 
-                  rounded-2xl p-6"
+                  rounded-2xl p-6 mx-2"
               >
                 <Icon className="text-3xl sm:text-4xl md:text-5xl text-gray-800" />
                 <span className="text-xs sm:text-sm md:text-base font-medium mt-2 text-gray-800">
                   {brand.name}
                 </span>
-              </div>
+              </motion.div>
             );
           })}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
