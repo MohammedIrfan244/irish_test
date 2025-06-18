@@ -8,6 +8,11 @@ import {
   FaMicrosoft,
   FaAmazon,
   FaSpotify,
+  FaFacebook,
+  FaLinkedin,
+  FaTwitter,
+  FaYoutube,
+  FaDropbox,
 } from 'react-icons/fa';
 
 const brands = [
@@ -16,40 +21,58 @@ const brands = [
   { icon: FaMicrosoft, name: 'Microsoft' },
   { icon: FaAmazon, name: 'Amazon' },
   { icon: FaSpotify, name: 'Spotify' },
+  { icon: FaFacebook, name: 'Facebook' },
+  { icon: FaLinkedin, name: 'LinkedIn' },
+  { icon: FaTwitter, name: 'Twitter' },
+  { icon: FaYoutube, name: 'YouTube' },
+  { icon: FaDropbox, name: 'Dropbox' },
 ];
+
+const infiniteBrands = [...brands, ...brands];
 
 function Banner() {
   const [emblaRef, emblaApi] = useEmblaCarousel({
-    loop:true,
-    align:'start',
-    dragFree:false,
-    slidesToScroll:1,
-    breakpoints:{}
+    loop: true,
+    align: 'start',
+    containScroll: 'trimSnaps',
+    dragFree: true,
   });
 
   useEffect(() => {
     if (!emblaApi) return;
-    const autoScroll = setInterval(()=>{
-      emblaApi.scrollNext()
-    },4000)
-    return ()=>clearInterval(autoScroll)
+
+    let rafId: number;
+
+    const scroll = () => {
+      const delta = 0.02;
+      emblaApi.scrollTo(emblaApi.scrollProgress() + delta);
+      rafId = requestAnimationFrame(scroll);
+    };
+
+    rafId = requestAnimationFrame(scroll);
+
+    return () => cancelAnimationFrame(rafId);
   }, [emblaApi]);
 
   return (
-    <div className="w-full px-4 md:px-12 py-20">
+    <div className="w-full px-0 py-16 overflow-hidden bg-white">
       <div className="overflow-hidden" ref={emblaRef}>
-        <div className="flex items-center">
-          {brands.map((brand) => {
+        <div className="flex w-full">
+          {infiniteBrands.map((brand, index) => {
             const Icon = brand.icon;
-
             return (
               <div
-                className="flex-shrink-0 flex flex-col items-center justify-center mx-4 transition-all duration-300 bg-gray-100 shadow-2xl scale-110 opacity-100' 
-                  rounded-2xl p-4 w-32 md:w-40"
-                key={brand.name}
+                key={`${brand.name}-${index}`}
+                className="flex-shrink-0 basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 
+                  flex flex-col items-center justify-center 
+                  transition-all duration-300 ease-in-out 
+                  hover:bg-gray-100 hover:shadow-2xl hover:scale-105 
+                  rounded-2xl p-6"
               >
-                <Icon className={`text-4xl md:text-5xl text-gray-800`} />
-                <span className="text-sm md:text-base font-medium mt-2 text-gray-800">{brand.name}</span>
+                <Icon className="text-3xl sm:text-4xl md:text-5xl text-gray-800" />
+                <span className="text-xs sm:text-sm md:text-base font-medium mt-2 text-gray-800">
+                  {brand.name}
+                </span>
               </div>
             );
           })}

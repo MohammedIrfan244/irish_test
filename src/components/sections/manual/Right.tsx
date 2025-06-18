@@ -10,9 +10,9 @@ import { motion } from 'framer-motion'
 
 function Right() {
   return (
-    <div className='w-full lg:ps-20 md:ps10'>
+    <div className='w-full lg:ps-20 md:ps-10'>
     <motion.div
-      className='relative rounded-3xl w-4/5 shadow-lg p-7 transition duration-300 hover:scale-[1.01] hover:shadow-2xl bg-white'
+      className='relative rounded-3xl w-full lg-w-4/5 shadow-lg p-7 transition duration-300 hover:scale-[1.01] hover:shadow-2xl bg-white'
       initial={{ opacity: 0, scale: 0.95 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
@@ -62,7 +62,7 @@ function Right() {
         </div>
       </div>
 
-      <div className='absolute -bottom-3 -right-2 bg-white rounded-2xl shadow-lg p-4 w-60 z-20 transition duration-300 hover:scale-[1.02] hover:shadow-2xl'>
+      <div className='absolute -bottom-3 right-0 lg:-right-2 bg-white rounded-2xl shadow-lg p-4 w-60 z-20 transition duration-300 hover:scale-[1.02] hover:shadow-2xl'>
         <div className='flex items-center space-x-3'>
           <div className='w-12 h-12 rounded-full overflow-hidden flex-shrink-0 transition-transform duration-300 hover:scale-110'>
             <Image
