@@ -61,7 +61,7 @@ function Right() {
         </div>
       </div>
 
-      <div className='absolute -bottom-4 -right-6 bg-white rounded-2xl shadow-lg p-4 w-64 z-20 transition duration-300 hover:scale-[1.02] hover:shadow-2xl'>
+      <div className='absolute -bottom-4 -right-6 bg-white rounded-2xl shadow-lg p-4 w-60 z-20 transition duration-300 hover:scale-[1.02] hover:shadow-2xl'>
         <div className='flex items-center space-x-3'>
           <div className='w-12 h-12 rounded-full overflow-hidden flex-shrink-0 transition-transform duration-300 hover:scale-110'>
             <Image

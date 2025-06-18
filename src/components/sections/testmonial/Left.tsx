@@ -17,7 +17,7 @@ function Left({ total, current, onDotClick }: ILeftProps) {
       transition={{ duration: 0.6, ease: 'easeOut' }}
       viewport={{ once: true, amount: 0.3 }}
     >
-      <div className='space-y-5'>
+      <div className='space-y-5 text-center lg:text-start'>
         <p className='text-lg md:text-xl text-[#5e6282] tracking-widest font-sans font-bold'>
           TESTIMONIALS
         </p>

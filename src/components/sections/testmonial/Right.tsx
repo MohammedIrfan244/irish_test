@@ -52,7 +52,7 @@ function Right({ selectedIndex, onCardClick }: IRightProps) {
   const stackedCards = getStackOrder()
 
   return (
-    <div className="relative h-[400px] w-[500px] mx-auto">
+    <div className="relative h-[400px] lg:w-[500px] max-w-full px-5 pt-10 lg:pt-0 lg:px-0">
       {stackedCards.map((client) => (
         <div
           key={client.originalIndex}

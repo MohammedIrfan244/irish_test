@@ -13,7 +13,7 @@ interface ICards {
 function Cards({ name, image, description, testimonial, isActive = false, stackIndex }: ICards) {
   return (
     <div 
-      className={`w-[450px] h-auto bg-white shadow-xl rounded-xl p-5 relative transition-all duration-500 ease-out cursor-pointer ${
+      className={`lg:w-[450px] w-[300px] sm:w-[350px] md:w-[400px] h-auto bg-white shadow-xl rounded-xl p-5 relative transition-all duration-500 ease-out cursor-pointer ${
         isActive ? 'scale-100 shadow-2xl' : 'scale-95 shadow-lg hover:scale-98'
       }`}
       style={{
