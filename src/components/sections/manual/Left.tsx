@@ -30,7 +30,7 @@ const steps = [
 
 function Left() {
   return (
-    <div className='py-8'>
+    <div className='py-8m px-3 lg:px-5'>
       <div className='space-y-8'>
         <div className='space-y-4 text-center lg:text-left'>
           <p className='text-lg md:text-xl text-[#5e6282] tracking-widest font-sans font-bold'>Easy and Fast</p>

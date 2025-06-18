@@ -10,9 +10,9 @@ import { motion } from 'framer-motion'
 
 function Right() {
   return (
-    <div className='w-full relative'>
+    <div className='w-full lg:ps-20 md:ps10'>
     <motion.div
-      className='relative rounded-3xl shadow-2xl p-7 transition duration-300 hover:scale-[1.01] hover:shadow-xl bg-white'
+      className='relative rounded-3xl shadow-lg p-7 transition duration-300 hover:scale-[1.01] hover:shadow-2xl bg-white'
       initial={{ opacity: 0, scale: 0.95 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
