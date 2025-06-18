@@ -15,7 +15,6 @@ function Menu() {
 
   return (
     <>
-      {/* for pc */}
       <div className="hidden md:flex items-center gap-6 lg:gap-10">
         {MENU.map((item) => (
           <p
@@ -30,7 +29,6 @@ function Menu() {
         <HiBars3 className="text-2xl cursor-pointer" onClick={() => setIsOpen(true)} />
       </div>
 
-      {/* for sm */}
       {isOpen && (
         <div className="fixed top-0 left-0 h-full w-64 bg-white shadow-lg z-50 p-6">
           <div className="flex justify-end mb-6">

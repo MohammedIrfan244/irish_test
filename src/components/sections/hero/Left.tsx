@@ -68,7 +68,7 @@ function Left() {
           Find out more
         </motion.button>
         
-        <div className='flex gap-4 items-center text-center text-base sm:text-lg md:text-xl font-semibold text-gray-500'>
+        <div className='flex gap-4 border rounded-2xl py-2 w-full lg:w-auto justify-center lg:py-0 lg:rounded-none border-gray-400 lg:border-none items-center text-center text-base sm:text-lg md:text-xl font-semibold text-gray-500'>
           <motion.div 
             className='w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full flex justify-center bg-[#df6951] items-center'
             whileHover={{ scale: 1.1 }}
