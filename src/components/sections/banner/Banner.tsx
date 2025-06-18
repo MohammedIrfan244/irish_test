@@ -55,12 +55,8 @@ function Banner() {
   }, [emblaApi]);
 
   return (
-    <motion.div 
+    <div 
       className="w-full px-0 py-16 mt-10 lg:mt-16 overflow-hidden bg-white"
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
     >
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex w-full">
@@ -88,7 +84,7 @@ function Banner() {
           })}
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
 

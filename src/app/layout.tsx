@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/shared/navbar/Navbar";
 // import Footer from "@/components/shared/footer/Footer";
 import { gabarito } from "@/lib/fonts";
+import Footer from "@/components/shared/footer/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,6 +33,7 @@ export default function RootLayout({
       >
         <Navbar/>
         {children}
+        <Footer/>
       </body>
     </html>
   );
