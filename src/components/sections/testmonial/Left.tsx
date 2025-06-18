@@ -5,9 +5,10 @@ import { motion } from 'framer-motion'
 interface ILeftProps {
   total: number
   current: number
+  onDotClick: (index: number) => void
 }
 
-function Left({ total, current }: ILeftProps) {
+function Left({ total, current, onDotClick }: ILeftProps) {
   return (
     <motion.div
       className='flex flex-col justify-between h-full'
@@ -28,15 +29,18 @@ function Left({ total, current }: ILeftProps) {
 
       <div className='lg:flex items-center gap-2 mt-4 hidden'>
         {Array.from({ length: total }).map((_, index) => (
-          <motion.div
+          <motion.button
             key={index}
-            className={`w-3 h-3 rounded-full transition-colors duration-200 ${
-              index + 1 === current ? 'bg-[#181e4b]' : 'bg-gray-300'
+            onClick={() => onDotClick(index)}
+            className={`w-3 h-3 rounded-full transition-all duration-300 cursor-pointer ${
+              index === current ? 'bg-[#181e4b] scale-125' : 'bg-gray-300 hover:bg-gray-400'
             }`}
             initial={{ scale: 0.8, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
+            whileInView={{ scale: index === current ? 1.25 : 1, opacity: 1 }}
             transition={{ delay: index * 0.05, duration: 0.3 }}
             viewport={{ once: true }}
+            whileHover={{ scale: index === current ? 1.25 : 1.1 }}
+            whileTap={{ scale: 0.9 }}
           />
         ))}
       </div>

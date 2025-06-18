@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 
 interface JalebiProps {
   size?: number; 
@@ -7,8 +7,8 @@ interface JalebiProps {
 function Jalebi({ size = 200 }: JalebiProps) {
   const center = size / 2;
 
-  const spirals = useMemo(() => {
-    const spiralData = [];
+  const generateMultiLayerSpiral = () => {
+    const spirals = [];
     const layers = 3;
 
     for (let layer = 0; layer < layers; layer++) {
@@ -25,22 +25,20 @@ function Jalebi({ size = 200 }: JalebiProps) {
         const x = center + radius * Math.cos(angle);
         const y = center + radius * Math.sin(angle);
 
-        // Round to prevent floating point precision differences
-        const roundedX = Math.round(x * 1000) / 1000;
-        const roundedY = Math.round(y * 1000) / 1000;
-
-        path += i === 0 ? `M ${roundedX} ${roundedY}` : ` L ${roundedX} ${roundedY}`;
+        path += i === 0 ? `M ${x} ${y}` : ` L ${x} ${y}`;
       }
 
-      spiralData.push({
+      spirals.push({
         path,
         color: '#d3d3d3',
         width: size * 0.003,
       });
     }
 
-    return spiralData;
-  }, [size, center]);
+    return spirals;
+  };
+
+  const spirals = generateMultiLayerSpiral();
 
   return (
     <svg
@@ -49,7 +47,7 @@ function Jalebi({ size = 200 }: JalebiProps) {
       viewBox={`0 0 ${size} ${size}`}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className="drop-shadow-sm"
+      className="drop-shadow-sm animate-pulsing"
     >
       <circle cx={center} cy={center} r={size * 0.01} fill="#d3d3d3" opacity="0.3" />
 
@@ -74,4 +72,4 @@ function Jalebi({ size = 200 }: JalebiProps) {
   );
 }
 
-export default Jalebi;                      
+export default Jalebi;
