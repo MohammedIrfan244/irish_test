@@ -34,8 +34,9 @@ function Banner() {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
     align: 'start',
+    skipSnaps: false,
+    dragFree: false,
     containScroll: 'trimSnaps',
-    dragFree: true,
   });
 
   useEffect(() => {
@@ -55,7 +56,7 @@ function Banner() {
   }, [emblaApi]);
 
   return (
-    <div className="w-full px-0 py-16 overflow-hidden bg-white">
+    <div className="w-full px-0 py-16 mt-10 lg:mt-16 overflow-hidden bg-white">
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex w-full">
           {infiniteBrands.map((brand, index) => {
