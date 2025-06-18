@@ -11,7 +11,7 @@ interface ILeftProps {
 function Left({ total, current, onDotClick }: ILeftProps) {
   return (
     <motion.div
-      className='flex flex-col justify-between h-full'
+      className='flex flex-col justify-between items-center lg:items-start h-full'
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
@@ -27,7 +27,7 @@ function Left({ total, current, onDotClick }: ILeftProps) {
         </h2>
       </div>
 
-      <div className='lg:flex items-center gap-2 mt-4 hidden'>
+      <div className='flex items-center gap-2 mt-4'>
         {Array.from({ length: total }).map((_, index) => (
           <motion.button
             key={index}

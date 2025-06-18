@@ -71,13 +71,13 @@ function Right({ selectedIndex, onCardClick }: IRightProps) {
       ))}
       <button
         onClick={() => onCardClick((selectedIndex - 1 + clients.length) % clients.length)}
-        className="absolute right-[-60px] top-0 hover:cursor-pointer w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors z-50"
+        className="absolute hidden lg:flex right-[-60px] top-0 hover:cursor-pointer w-10 h-10 bg-white rounded-full shadow-lg items-center justify-center hover:bg-gray-50 transition-colors z-50"
       >
         <FiChevronUp className="w-5 h-5 text-gray-600" />
       </button>
       <button
         onClick={() => onCardClick((selectedIndex + 1) % clients.length)}
-        className="absolute hover:cursor-pointer right-[-60px] top-1/2 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors z-50"
+        className="absolute hover:cursor-pointer right-[-60px] top-1/2 w-10 h-10 bg-white rounded-full shadow-lg hidden lg:flex items-center justify-center hover:bg-gray-50 transition-colors z-50"
       >
         <FiChevronDown className="w-5 h-5 text-gray-600" />
       </button>
