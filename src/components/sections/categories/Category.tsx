@@ -6,14 +6,14 @@ import Cards from './Cards';
 import { motion } from 'framer-motion';
 import { IoChevronBack, IoChevronForward } from 'react-icons/io5';
 
-interface IGategory {
+interface ICategory {
   id: string;
   image: string;
   title: string;
   description: string;
 }
 
-const CATEGORIES: IGategory[] = [
+const CATEGORIES: ICategory[] = [
   {
     id: "first",
     image: "/images/radar.png",
