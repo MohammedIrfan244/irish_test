@@ -1,4 +1,7 @@
-import React from 'react';
+'use client';
+
+import React, { useEffect } from 'react';
+import useEmblaCarousel from 'embla-carousel-react';
 import {
   FaApple,
   FaGoogle,
@@ -7,36 +10,50 @@ import {
   FaSpotify,
 } from 'react-icons/fa';
 
+const brands = [
+  { icon: FaApple, name: 'Apple' },
+  { icon: FaGoogle, name: 'Google' },
+  { icon: FaMicrosoft, name: 'Microsoft' },
+  { icon: FaAmazon, name: 'Amazon' },
+  { icon: FaSpotify, name: 'Spotify' },
+];
+
 function Banner() {
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop:true,
+    align:'start',
+    dragFree:false,
+    slidesToScroll:1,
+    breakpoints:{}
+  });
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    const autoScroll = setInterval(()=>{
+      emblaApi.scrollNext()
+    },4000)
+    return ()=>clearInterval(autoScroll)
+  }, [emblaApi]);
+
   return (
-    <div className="w-full px-12 py-20">
-      <div className="flex items-center justify-between flex-wrap gap-8 md:gap-0">
+    <div className="w-full px-4 md:px-12 py-20">
+      <div className="overflow-hidden" ref={emblaRef}>
+        <div className="flex items-center">
+          {brands.map((brand) => {
+            const Icon = brand.icon;
 
-        <div className="flex items-center gap-2 opacity-60 hover:opacity-100 hover:shadow-2xl rounded-2xl transition-opacity duration-300">
-          <FaApple className="text-4xl md:text-5xl text-gray-800" />
-          <span className="text-base md:text-lg text-gray-800 font-medium">Apple</span>
+            return (
+              <div
+                className="flex-shrink-0 flex flex-col items-center justify-center mx-4 transition-all duration-300 bg-gray-100 shadow-2xl scale-110 opacity-100' 
+                  rounded-2xl p-4 w-32 md:w-40"
+                key={brand.name}
+              >
+                <Icon className={`text-4xl md:text-5xl text-gray-800`} />
+                <span className="text-sm md:text-base font-medium mt-2 text-gray-800">{brand.name}</span>
+              </div>
+            );
+          })}
         </div>
-
-        <div className="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity  hover:shadow-2xl rounded-2xl duration-300">
-          <FaGoogle className="text-4xl md:text-5xl text-gray-800" />
-          <span className="text-base md:text-lg text-gray-800 font-medium">Google</span>
-        </div>
-
-        <div className="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity duration-300 hover:shadow-2xl rounded-2xl">
-          <FaMicrosoft className="text-4xl md:text-5xl text-gray-800" />
-          <span className="text-base md:text-lg text-gray-800 font-medium">Microsoft</span>
-        </div>
-
-        <div className="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity duration-300 hover:shadow-2xl rounded-2xl">
-          <FaAmazon className="text-4xl md:text-5xl text-gray-800" />
-          <span className="text-base md:text-lg text-gray-800 font-medium">Amazon</span>
-        </div>
-
-        <div className="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity duration-300 hover:shadow-2xl rounded-2xl">
-          <FaSpotify className="text-4xl md:text-5xl text-gray-800" />
-          <span className="text-base md:text-lg text-gray-800 font-medium">Spotify</span>
-        </div>
-
       </div>
     </div>
   );
