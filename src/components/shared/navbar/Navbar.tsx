@@ -35,7 +35,7 @@ useEffect(() => {
   return (
     <motion.div
     animate={controls}
-     className='flex w-screen items-center fixed top-0 justify-between h-20 md:h-24 lg:h-28 z-40 px-5 md:px-10 lg:px-20 bg-white'>
+     className='flex w-screen items-center fixed top-0 justify-between h-20 md:h-24 lg:h-28 z-[200] px-5 md:px-10 lg:px-20 bg-white'>
       <Logo/>
       <div className='flex md:flex md:flex-row items-center font-semibold gap-5 md:gap-10 lg:gap-15 flex-row-reverse md:text-xl h-full '>
       <Menu/>

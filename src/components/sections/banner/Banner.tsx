@@ -2,7 +2,7 @@
 
 import React, { useEffect } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
-import { easeOut, motion } from 'framer-motion';
+import {  motion } from 'framer-motion';
 import {
   FaApple,
   FaGoogle,
@@ -71,7 +71,7 @@ function Banner() {
               initial={{opacity:0,y:50}}
               whileInView={{opacity:1,y:0}}
               viewport={{once:false}}
-              transition={{duration:0.9,ease:easeOut}}
+              transition={{duration:0.5,ease:"linear"}}
                 key={`${brand.name}-${index}`}
                 className="flex-shrink-0 basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 
                   flex flex-col items-center justify-center 
